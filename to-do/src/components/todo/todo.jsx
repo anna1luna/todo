@@ -20,6 +20,12 @@ const Todo = (props) => {
     props.updNewTaskText(text, description, status);
   };
 
+  const countCompletedTasks = () => {
+    const completedTasks = props.todoData.filter(
+      (task) => task.status === "Выполнено"
+    );
+    return completedTasks.length;
+  };
   const todoReady = props.todoData.map((task) => (
     <tr key={task.id}>
       <td className={`${s.tasks} col-3`}>{task.task}</td>
@@ -106,7 +112,9 @@ const Todo = (props) => {
             <td colSpan="2" className={`table-active`}>
               Общее количество задач:
             </td>
-            <td className={`table-active ${s.total}`}>3</td>
+            <td className={`table-active ${s.total}`}>
+              {countCompletedTasks()}
+            </td>
           </tr>
         </tbody>
       </table>
