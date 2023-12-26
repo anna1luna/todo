@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./components/header/header";
 import SideContainer from "./components/side/sideContainer";
-import TasksContainer from "./components/tasks/tasksContainer";
+import TodoContainer from "./components/todo/todoContainer";
 
 const App = (props) => {
   return (
@@ -9,7 +9,7 @@ const App = (props) => {
       <Header />
       <div className="body">
         <SideContainer />
-        <TasksContainer />
+        <TodoContainer />
       </div>
     </div>
   );

@@ -1,0 +1,18 @@
+.header {
+ background-color: #fefbec;
+ box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+ width: 100%;
+ display: flex;
+ justify-content: center;
+
+}
+.header_logo {
+  width: 75px;
+  height: 75px;
+  display: inline;
+}
+
+.header_heading {
+  display: inline;
+  padding-top: 10px;
+}

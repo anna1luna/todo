@@ -1,5 +1,5 @@
 import React from "react";
 import s from "./tasks.module.css";
-const Tasks = (props) => {};
+const Todo = (props) => {};
 
-export default Tasks;
+export default Todo;
