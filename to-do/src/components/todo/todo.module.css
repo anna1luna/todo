@@ -37,3 +37,26 @@ table {
   color: #fefbec;
 }
 
+.selectionTasks {
+  background-color: #212529;
+  color: #fefbec;
+
+}
+
+td, tr {
+  color: #fefbec;                           
+}
+
+.total {
+  text-align: end;
+}
+
+.counter {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  margin-bottom: -15px;
+  font-size: 11px;
+  color: #fefbec;                           
+
+}
