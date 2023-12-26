@@ -8,6 +8,9 @@ const Todo = (props) => {
 
   let addTask = () => {
     props.addTask();
+    todoTaskRef.current.value = "";
+    todoDescriptionRef.current.value = "";
+    todoStatusRef.current.value = 0;
   };
 
   let updNewTaskText = (e) => {
@@ -53,6 +56,7 @@ const Todo = (props) => {
             ref={todoTaskRef}
             onChange={updNewTaskText}
             placeholder="Введите название задачи"
+            value={props.todoText}
           />
           <div className={s.counter}>
             <p>*Задача должна содержать больше 30 символов</p>
@@ -64,7 +68,7 @@ const Todo = (props) => {
           aria-label="Default select"
           onChange={updNewTaskText}
           ref={todoStatusRef}
-          value="0"
+          value={props.todoStatus}
         >
           <option disabled value="0">
             Выберите статус
@@ -80,7 +84,7 @@ const Todo = (props) => {
             className={`form-control`}
             ref={todoDescriptionRef}
             onChange={updNewTaskText}
-            defaultValue={props.todoDescription}
+            value={props.todoDescription}
           />
         </div>
         <button className={`btn btn-primary ${s.add}`} onClick={addTask}>
