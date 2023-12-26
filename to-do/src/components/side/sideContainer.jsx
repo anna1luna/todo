@@ -1,4 +1,8 @@
 import React from "react";
-const SideContainer = (props) => {};
+import Side from "./side";
+import { connect } from "react-redux";
+const mapStateToProps = (state) => {};
+
+const SideContainer = connect(mapStateToProps)(Side);
 
 export default SideContainer;

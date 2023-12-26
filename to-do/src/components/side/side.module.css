@@ -1,0 +1,35 @@
+.navigation {
+  background-color: #beeff0;
+  margin: 20px;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.tasksList {
+  font-weight: 700;
+  font-size: 18px;
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+
+.tasks {
+  font-weight: 400;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.filtersList {
+  font-weight: 700;
+  font-size: 18px;
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+
+.filter {
+  font-weight: 400;
+  font-size: 16px;
+  margin-left: 10px;
+}
