@@ -16,6 +16,14 @@ const Todo = (props) => {
             placeholder="Введите название задачи"
           ></input>
         </div>
+        <select
+          className={`form-select ${s.selection}`}
+          aria-label="Default select"
+        >
+          <option selected>Выберите статус</option>
+          <option value="1">В работе</option>
+          <option value="2">Ожидание</option>
+        </select>
         <div className={s.form}>
           <label for="taskDescription" className={`form-label`}>
             Описание задачи
@@ -48,6 +56,12 @@ const Todo = (props) => {
             <td>купить корм</td>
             <td>пойди в Магнит за кормом для Яры</td>
             <td>Выполнено</td>
+          </tr>
+          <tr>
+            <td colspan="2" className={`table-active`}>
+              Общее количество задач:
+            </td>
+            <td className={`table-active`}>3</td>
           </tr>
         </tbody>
       </table>
