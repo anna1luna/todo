@@ -1,30 +1,31 @@
 const ADD_TASK = "ADD-TASK";
 const UPD_NEW_TASK_TEXT = "UPD-NEW-TASK-TEXT";
+const CHANGE_TASK_STATUS = "CHANGE-TASK-STATUS";
 
 let initialState = {
   todoData: [
     {
       task: "купить тыкву",
-      status: "Выполнено",
+      status: "1",
       description: "пойди в Магнит за тыквой",
       id: 1,
     },
     {
       task: "купить яблоки",
-      status: "В работе",
+      status: "2",
       description: "пойди в Магнит за яблоками",
       id: 2,
     },
     {
       task: "купить корм",
-      status: "Ожидание",
+      status: "3",
       description: "пойди в Магнит за кормом для Яры",
       id: 3,
     },
   ],
   todoText: "",
   todoDescription: "",
-  todoStatus: 0,
+  todoStatus: "0",
 };
 
 const todoReducer = (state = initialState, action) => {
@@ -50,7 +51,17 @@ const todoReducer = (state = initialState, action) => {
         return state;
       }
     }
-
+    case CHANGE_TASK_STATUS: {
+      const { taskId, newStatus } = action;
+      const updatedTodoData = state.todoData.map((task) =>
+        task.id === taskId ? { ...task, status: newStatus } : task
+      );
+      console.log(updatedTodoData);
+      return {
+        ...state,
+        todoData: updatedTodoData,
+      };
+    }
     case UPD_NEW_TASK_TEXT:
       const updatedState = {
         ...state,
@@ -69,6 +80,13 @@ export const addTaskAC = () => {
   return { type: ADD_TASK };
 };
 
+export const changeTaskStatusAC = (taskId, newStatus) => {
+  return {
+    type: CHANGE_TASK_STATUS,
+    taskId,
+    newStatus,
+  };
+};
 export const updNewTaskTextAC = (text, description, status) => {
   return {
     type: UPD_NEW_TASK_TEXT,

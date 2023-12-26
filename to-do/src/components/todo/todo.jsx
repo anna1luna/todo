@@ -20,10 +20,11 @@ const Todo = (props) => {
     props.updNewTaskText(text, description, status);
   };
 
+  let changeTaskStatus = (taskId, newStatus) => {
+    props.changeTaskStatus(taskId, newStatus);
+  };
   const countCompletedTasks = () => {
-    const completedTasks = props.todoData.filter(
-      (task) => task.status === "Выполнено"
-    );
+    const completedTasks = props.todoData.filter((task) => task.status === "3");
     return completedTasks.length;
   };
   const todoReady = props.todoData.map((task) => (
@@ -34,7 +35,7 @@ const Todo = (props) => {
         <select
           className={`form-select ${s.selectionTasks}`}
           aria-label="Default select"
-          onChange={(e) => updNewTaskText(e, task.id)}
+          onChange={(e) => changeTaskStatus(task.id, e.target.value)}
           value={task.status}
         >
           <option value="0" selected>

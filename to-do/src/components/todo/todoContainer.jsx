@@ -1,6 +1,10 @@
 import { connect } from "react-redux";
 import Todo from "./todo";
-import { addTaskAC, updNewTaskTextAC } from "../../redux/todoReducer";
+import {
+  addTaskAC,
+  updNewTaskTextAC,
+  changeTaskStatusAC,
+} from "../../redux/todoReducer";
 const mapStateToProps = (state) => {
   return {
     todoData: state.todo.todoData,
@@ -13,6 +17,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     updNewTaskText: (text, description, status) => {
       dispatch(updNewTaskTextAC(text, description, status));
+    },
+    changeTaskStatus: (taskId, newStatus) => {
+      dispatch(changeTaskStatusAC(taskId, newStatus));
     },
   };
 };
