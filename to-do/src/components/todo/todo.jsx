@@ -19,8 +19,8 @@ const Todo = (props) => {
 
   const todoReady = props.todoData.map((task) => (
     <tr key={task.id}>
-      <td>{task.task}</td>
-      <td>{task.description}</td>
+      <td className={`${s.tasks} col-3`}>{task.task}</td>
+      <td className={`${s.tasks} col-6`}>{task.description}</td>
       <td>
         <select
           className={`form-select ${s.selectionTasks}`}
