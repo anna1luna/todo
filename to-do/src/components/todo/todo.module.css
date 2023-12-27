@@ -42,7 +42,9 @@ table {
   color: #fefbec;
 
 }
-
+.selection {
+  margin-bottom: 20px;
+}
 td, tr {
   color: #fefbec;                           
 }
