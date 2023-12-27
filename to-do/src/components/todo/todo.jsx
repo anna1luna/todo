@@ -38,9 +38,6 @@ const Todo = (props) => {
           onChange={(e) => changeTaskStatus(task.id, e.target.value)}
           value={task.status}
         >
-          <option value="0" selected>
-            {task.status}
-          </option>
           <option value="1">В работе</option>
           <option value="2">Ожидание</option>
           <option value="3">Выполнено</option>

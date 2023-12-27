@@ -44,7 +44,7 @@ const todoReducer = (state = initialState, action) => {
           todoData: [...state.todoData, newTask],
           todoText: "",
           todoDescription: "",
-          todoStatus: 0,
+          todoStatus: "0",
         };
       } else {
         alert("Задача должна содержать более 30 символов");
