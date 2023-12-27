@@ -49,6 +49,94 @@ const Todo = (props) => {
   const handleSwitchToggle = (switchId) => {
     props.toggleSwitch(switchId);
   };
+
+  const filterTasksByStatus = () => {
+    return props.todoData.map((task) => {
+      // Check if switch2 is true and task status is not equal to 1
+      if (props.switchStates["custom-switch-2"] && task.status === "1") {
+        return (
+          <tr key={task.id}>
+            <td className={`${s.tasks} col-3`}>{task.task}</td>
+            <td className={`${s.tasks} col-6`}>{task.description}</td>
+            <td>
+              <select
+                className={`form-select ${s.selectionTasks}`}
+                aria-label="Default select"
+                onChange={(e) => changeTaskStatus(task.id, e.target.value)}
+                value={task.status}
+              >
+                <option value="1">В работе</option>
+                <option value="2">Ожидание</option>
+                <option value="3">Выполнено</option>
+              </select>
+            </td>
+          </tr>
+        );
+      } else if (props.switchStates["custom-switch-3"] && task.status === "2") {
+        return (
+          <tr key={task.id}>
+            <td className={`${s.tasks} col-3`}>{task.task}</td>
+            <td className={`${s.tasks} col-6`}>{task.description}</td>
+            <td>
+              <select
+                className={`form-select ${s.selectionTasks}`}
+                aria-label="Default select"
+                onChange={(e) => changeTaskStatus(task.id, e.target.value)}
+                value={task.status}
+              >
+                <option value="1">В работе</option>
+                <option value="2">Ожидание</option>
+                <option value="3">Выполнено</option>
+              </select>
+            </td>
+          </tr>
+        );
+      } else if (props.switchStates["custom-switch-4"] && task.status === "3") {
+        return (
+          <tr key={task.id}>
+            <td className={`${s.tasks} col-3`}>{task.task}</td>
+            <td className={`${s.tasks} col-6`}>{task.description}</td>
+            <td>
+              <select
+                className={`form-select ${s.selectionTasks}`}
+                aria-label="Default select"
+                onChange={(e) => changeTaskStatus(task.id, e.target.value)}
+                value={task.status}
+              >
+                <option value="1">В работе</option>
+                <option value="2">Ожидание</option>
+                <option value="3">Выполнено</option>
+              </select>
+            </td>
+          </tr>
+        );
+      } else if (
+        props.switchStates["custom-switch-1"] &&
+        ["1", "2", "3"].includes(task.status)
+      ) {
+        return (
+          <tr key={task.id}>
+            <td className={`${s.tasks} col-3`}>{task.task}</td>
+            <td className={`${s.tasks} col-6`}>{task.description}</td>
+            <td>
+              <select
+                className={`form-select ${s.selectionTasks}`}
+                aria-label="Default select"
+                onChange={(e) => changeTaskStatus(task.id, e.target.value)}
+                value={task.status}
+              >
+                <option value="1">В работе</option>
+                <option value="2">Ожидание</option>
+                <option value="3">Выполнено</option>
+              </select>
+            </td>
+          </tr>
+        );
+      } else {
+        return null;
+      }
+    });
+  };
   return (
     <div className={s.container}>
       <h2>Мои Задачи</h2>
@@ -67,7 +155,6 @@ const Todo = (props) => {
           />
           <div className={s.counter}>
             <p>*Задача должна содержать больше 30 символов</p>
-            <p>0</p>
           </div>
         </div>
         <select
@@ -147,7 +234,7 @@ const Todo = (props) => {
           </tr>
         </thead>
         <tbody>
-          {todoReady}
+          {filterTasksByStatus()}
           <tr>
             <td colSpan="2" className={`table-active`}>
               Общее количество выполненных задач:

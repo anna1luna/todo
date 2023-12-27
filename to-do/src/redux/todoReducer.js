@@ -84,6 +84,20 @@ const todoReducer = (state = initialState, action) => {
         ...state.switchStates,
         [switchId]: !state.switchStates[switchId],
       };
+      if (switchId === "custom-switch-1" && updatedSwitchStates[switchId]) {
+        // If switch1 is turned on, turn off the other switches
+        Object.keys(updatedSwitchStates).forEach((key) => {
+          if (key !== switchId) {
+            updatedSwitchStates[key] = false;
+          }
+        });
+      } else if (
+        switchId !== "custom-switch-1" &&
+        updatedSwitchStates[switchId]
+      ) {
+        // If any other switch is turned on, turn off switch1
+        updatedSwitchStates["custom-switch-1"] = false;
+      }
       console.log("New Switch States:", updatedSwitchStates);
       return { ...state, switchStates: updatedSwitchStates };
     }
