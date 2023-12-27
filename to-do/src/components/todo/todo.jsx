@@ -108,7 +108,7 @@ const Todo = (props) => {
           {todoReady}
           <tr>
             <td colSpan="2" className={`table-active`}>
-              Общее количество задач:
+              Общее количество выполненных задач:
             </td>
             <td className={`table-active ${s.total}`}>
               {countCompletedTasks()}
