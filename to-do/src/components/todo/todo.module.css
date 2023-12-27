@@ -64,3 +64,11 @@ td, tr {
 .tasks {
   word-break: break-all;
 }
+
+.filtersList{
+  list-style-type: none;
+  color: #fefbec;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./todo.module.css";
+import { Form } from "react-bootstrap";
 
 const Todo = (props) => {
   let todoTaskRef = React.createRef();
@@ -95,6 +96,21 @@ const Todo = (props) => {
           Добавить
         </button>
       </div>
+
+      <ul className={s.filtersList}>
+        <li className={s.filter}>
+          <Form.Check type="switch" id="custom-switch-1" label="Все" />
+        </li>
+        <li className={s.filter}>
+          <Form.Check type="switch" id="custom-switch-2" label="В работе" />
+        </li>
+        <li className={s.filter}>
+          <Form.Check type="switch" id="custom-switch-3" label="Ожидание" />
+        </li>
+        <li className={s.filter}>
+          <Form.Check type="switch" id="custom-switch-3" label="Выполнено" />
+        </li>
+      </ul>
 
       <table className={`table table-dark table-hover`}>
         <thead>
