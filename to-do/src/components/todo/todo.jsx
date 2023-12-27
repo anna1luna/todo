@@ -46,7 +46,9 @@ const Todo = (props) => {
       </td>
     </tr>
   ));
-
+  const handleSwitchToggle = (switchId) => {
+    props.toggleSwitch(switchId);
+  };
   return (
     <div className={s.container}>
       <h2>Мои Задачи</h2>
@@ -99,16 +101,40 @@ const Todo = (props) => {
 
       <ul className={s.filtersList}>
         <li className={s.filter}>
-          <Form.Check type="switch" id="custom-switch-1" label="Все" />
+          <Form.Check
+            type="switch"
+            id="custom-switch-1"
+            label="Все"
+            checked={props.switchStates["custom-switch-1"]}
+            onChange={() => handleSwitchToggle("custom-switch-1")}
+          />
         </li>
         <li className={s.filter}>
-          <Form.Check type="switch" id="custom-switch-2" label="В работе" />
+          <Form.Check
+            type="switch"
+            id="custom-switch-2"
+            label="В работе"
+            checked={props.switchStates["custom-switch-2"]}
+            onChange={() => handleSwitchToggle("custom-switch-2")}
+          />
         </li>
         <li className={s.filter}>
-          <Form.Check type="switch" id="custom-switch-3" label="Ожидание" />
+          <Form.Check
+            type="switch"
+            id="custom-switch-3"
+            label="Ожидание"
+            checked={props.switchStates["custom-switch-3"]}
+            onChange={() => handleSwitchToggle("custom-switch-3")}
+          />
         </li>
         <li className={s.filter}>
-          <Form.Check type="switch" id="custom-switch-3" label="Выполнено" />
+          <Form.Check
+            type="switch"
+            id="custom-switch-4"
+            label="Выполнено"
+            checked={props.switchStates["custom-switch-4"]}
+            onChange={() => handleSwitchToggle("custom-switch-4")}
+          />
         </li>
       </ul>
 

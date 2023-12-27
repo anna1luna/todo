@@ -4,10 +4,12 @@ import {
   addTaskAC,
   updNewTaskTextAC,
   changeTaskStatusAC,
+  toggleSwitchAC,
 } from "../../redux/todoReducer";
 const mapStateToProps = (state) => {
   return {
     todoData: state.todo.todoData,
+    switchStates: state.todo.switchStates,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -20,6 +22,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     changeTaskStatus: (taskId, newStatus) => {
       dispatch(changeTaskStatusAC(taskId, newStatus));
+    },
+    toggleSwitch: (switchId) => {
+      dispatch(toggleSwitchAC(switchId));
     },
   };
 };

@@ -1,6 +1,7 @@
 const ADD_TASK = "ADD-TASK";
 const UPD_NEW_TASK_TEXT = "UPD-NEW-TASK-TEXT";
 const CHANGE_TASK_STATUS = "CHANGE-TASK-STATUS";
+const TOGGLE_SWITCH = "TOGGLE-SWITCH";
 
 let initialState = {
   todoData: [
@@ -26,6 +27,12 @@ let initialState = {
   todoText: "",
   todoDescription: "",
   todoStatus: "0",
+  switchStates: {
+    "custom-switch-1": true,
+    "custom-switch-2": false,
+    "custom-switch-3": false,
+    "custom-switch-4": false,
+  },
 };
 
 const todoReducer = (state = initialState, action) => {
@@ -71,6 +78,15 @@ const todoReducer = (state = initialState, action) => {
           action.newStatus === "number" ? action.newStatus : state.todoStatus,
       };
       return updatedState;
+    case TOGGLE_SWITCH: {
+      const { switchId } = action;
+      const updatedSwitchStates = {
+        ...state.switchStates,
+        [switchId]: !state.switchStates[switchId],
+      };
+      console.log("New Switch States:", updatedSwitchStates);
+      return { ...state, switchStates: updatedSwitchStates };
+    }
     default:
       return state;
   }
@@ -94,6 +110,10 @@ export const updNewTaskTextAC = (text, description, status) => {
     newDescription: description,
     newStatus: status,
   };
+};
+
+export const toggleSwitchAC = (switchId) => {
+  return { type: TOGGLE_SWITCH, switchId };
 };
 
 export default todoReducer;
