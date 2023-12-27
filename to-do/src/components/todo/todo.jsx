@@ -139,6 +139,7 @@ const Todo = (props) => {
             <p>*Задача должна содержать больше 30 символов</p>
           </div>
         </div>
+        <span className={s.status}> Статус задачи </span>
         <select
           className={`form-select ${s.selection}`}
           aria-label="Default select"

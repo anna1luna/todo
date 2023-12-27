@@ -44,6 +44,7 @@ table {
 }
 .selection {
   margin-bottom: 20px;
+  margin-top: 8px;
 }
 td, tr {
   color: #fefbec;                           
@@ -73,4 +74,8 @@ td, tr {
   display: flex;
   justify-content: space-between;
   padding: 10px;
+}
+
+.status {
+  color: #fefbec;
 }
