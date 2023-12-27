@@ -35,7 +35,7 @@ const todoReducer = (state = initialState, action) => {
       let newTask = {
         task: state.todoText,
         description: state.todoDescription,
-        status: state.todoStatus !== 0 ? state.todoStatus : 1,
+        status: state.todoStatus !== "0" ? state.todoStatus : "1",
         id: highestId + 1,
       };
       if (newTask.task.length > 30) {

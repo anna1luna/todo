@@ -77,7 +77,7 @@ const Todo = (props) => {
           ref={todoStatusRef}
           value={props.todoStatus}
         >
-          <option disabled value="0">
+          <option selected disabled value="0">
             Выберите статус
           </option>
           <option value="1">В работе</option>
