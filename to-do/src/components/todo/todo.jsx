@@ -28,31 +28,13 @@ const Todo = (props) => {
     const completedTasks = props.todoData.filter((task) => task.status === "3");
     return completedTasks.length;
   };
-  const todoReady = props.todoData.map((task) => (
-    <tr key={task.id}>
-      <td className={`${s.tasks} col-3`}>{task.task}</td>
-      <td className={`${s.tasks} col-6`}>{task.description}</td>
-      <td>
-        <select
-          className={`form-select ${s.selectionTasks}`}
-          aria-label="Default select"
-          onChange={(e) => changeTaskStatus(task.id, e.target.value)}
-          value={task.status}
-        >
-          <option value="1">В работе</option>
-          <option value="2">Ожидание</option>
-          <option value="3">Выполнено</option>
-        </select>
-      </td>
-    </tr>
-  ));
+
   const handleSwitchToggle = (switchId) => {
     props.toggleSwitch(switchId);
   };
 
   const filterTasksByStatus = () => {
     return props.todoData.map((task) => {
-      // Check if switch2 is true and task status is not equal to 1
       if (props.switchStates["custom-switch-2"] && task.status === "1") {
         return (
           <tr key={task.id}>

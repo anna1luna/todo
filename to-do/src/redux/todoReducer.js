@@ -39,19 +39,17 @@ const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TASK: {
       const highestId = Math.max(...state.todoData.map((task) => task.id));
+
       let newTask = {
         task: state.todoText,
         description: state.todoDescription,
-        status: state.todoStatus !== "0" ? state.todoStatus : "1",
+        status: state.todoStatus === "0" ? "1" : state.todoStatus,
         id: highestId + 1,
       };
       if (newTask.task.length > 30) {
         return {
           ...state,
           todoData: [...state.todoData, newTask],
-          todoText: "",
-          todoDescription: "",
-          todoStatus: "0",
         };
       } else {
         alert("Задача должна содержать более 30 символов");
@@ -63,20 +61,23 @@ const todoReducer = (state = initialState, action) => {
       const updatedTodoData = state.todoData.map((task) =>
         task.id === taskId ? { ...task, status: newStatus } : task
       );
-      console.log(updatedTodoData);
       return {
         ...state,
         todoData: updatedTodoData,
       };
     }
     case UPD_NEW_TASK_TEXT:
+      console.log("action.newStatus:", action.newStatus);
       const updatedState = {
         ...state,
         todoText: action.newText,
         todoDescription: action.newDescription,
         todoStatus:
-          action.newStatus === "number" ? action.newStatus : state.todoStatus,
+          typeof action.newStatus !== "undefined"
+            ? action.newStatus
+            : state.todoStatus,
       };
+      console.log(updatedState);
       return updatedState;
     case TOGGLE_SWITCH: {
       const { switchId } = action;
