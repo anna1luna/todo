@@ -149,6 +149,7 @@ const Todo = (props) => {
             ref={todoDescriptionRef}
             onChange={updNewTaskText}
             value={props.todoDescription}
+            placeholder="Введите описание задачи"
           />
         </div>
         <select
