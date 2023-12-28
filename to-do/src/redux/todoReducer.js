@@ -43,7 +43,7 @@ const todoReducer = (state = initialState, action) => {
       let newTask = {
         task: state.todoText,
         description: state.todoDescription,
-        status: state.todoStatus === "0" ? "1" : state.todoStatus,
+        status: "1",
         id: highestId + 1,
       };
       if (newTask.task.length > 30) {
@@ -68,17 +68,17 @@ const todoReducer = (state = initialState, action) => {
     }
     case UPD_NEW_TASK_TEXT:
       console.log("action.newStatus:", action.newStatus);
+      console.log("typeof action.newStatus:", typeof action.newStatus);
+      const newStatus = parseInt(action.newStatus, 10);
       const updatedState = {
         ...state,
         todoText: action.newText,
         todoDescription: action.newDescription,
-        todoStatus:
-          typeof action.newStatus !== "undefined"
-            ? action.newStatus
-            : state.todoStatus,
+        todoStatus: "1",
       };
-      console.log(updatedState);
+
       return updatedState;
+
     case TOGGLE_SWITCH: {
       const { switchId } = action;
       const updatedSwitchStates = {
@@ -86,7 +86,6 @@ const todoReducer = (state = initialState, action) => {
         [switchId]: !state.switchStates[switchId],
       };
       if (switchId === "custom-switch-1" && updatedSwitchStates[switchId]) {
-        // If switch1 is turned on, turn off the other switches
         Object.keys(updatedSwitchStates).forEach((key) => {
           if (key !== switchId) {
             updatedSwitchStates[key] = false;
@@ -96,7 +95,6 @@ const todoReducer = (state = initialState, action) => {
         switchId !== "custom-switch-1" &&
         updatedSwitchStates[switchId]
       ) {
-        // If any other switch is turned on, turn off switch1
         updatedSwitchStates["custom-switch-1"] = false;
       }
       console.log("New Switch States:", updatedSwitchStates);

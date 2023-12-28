@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(addTaskAC());
     },
     updNewTaskText: (text, description, status) => {
+      console.log("updNewTaskText values:", text, description, status);
       dispatch(updNewTaskTextAC(text, description, status));
     },
     changeTaskStatus: (taskId, newStatus) => {
