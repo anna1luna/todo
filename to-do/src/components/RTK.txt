@@ -1,0 +1,65 @@
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+// Замените URL на ваш реальный API endpoint
+const API_ENDPOINT = 'https://example.com/api/tasks';
+
+// Создаем асинхронный thunk для добавления задачи
+export const addTaskAsync = createAsyncThunk('tasks/addTask', async (taskData) => {
+  const response = await fetch(API_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(taskData),
+  });
+
+  // Возвращаем данные из ответа сервера
+  return await response.json();
+});
+
+const todoSlice = createSlice({
+  name: 'todo',
+  initialState,
+  reducers: {
+    // Ваши существующие action creators
+    addTask: (state) => {
+      // Ваш код
+    },
+    changeTaskStatus: (state, action) => {
+      // Ваш код
+    },
+    updNewTaskText: (state, action) => {
+      // Ваш код
+    },
+    toggleSwitch: (state, action) => {
+      // Ваш код
+    },
+  },
+  extraReducers: (builder) => {
+    // Обработка результатов асинхронного thunk
+    builder.addCase(addTaskAsync.fulfilled, (state, action) => {
+      // Обновление состояния после успешного выполнения запроса
+      state.todoData = [...state.todoData, action.payload];
+    });
+  },
+});
+
+export const { addTask, changeTaskStatus, updNewTaskText, toggleSwitch } = todoSlice.actions;
+
+export default todoSlice.reducer;
+
+
+import { useDispatch } from 'react-redux';
+import { addTaskAsync } from './path-to-your-slice';
+
+// ...
+
+const YourComponent = () => {
+  const dispatch = useDispatch();
+
+  const handleAddTask = (taskData) => {
+    dispatch(addTaskAsync(taskData));
+  };
+
+  // Другой код компонента
+};
